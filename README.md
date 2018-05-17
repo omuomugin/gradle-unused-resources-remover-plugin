@@ -20,14 +20,14 @@ buildscript {
   repositories {
     maven { url "https://plugins.gradle.org/m2/" }
   }
-  
+
   dependencies {
     classpath "gradle.plugin.com.github.konifar.gradle:plugin:0.3.2"
   }
 }
 ```
 
-NOTE: If your gradle version is 2.1 and later, you can use new snippet for plugins DSL. 
+NOTE: If your gradle version is 2.1 and later, you can use new snippet for plugins DSL.
 If you want to know more details, see [plugin](https://plugins.gradle.org/plugin/com.github.konifar.gradle.unused-resources-remover) page.
 
 ### app/build.gradle
@@ -37,7 +37,7 @@ apply plugin: "com.github.konifar.gradle.unused-resources-remover"
 ```
 
 ### Run
- 
+
 ```shell
 $ ./gradlew removeUnusedResources
 ```
@@ -82,12 +82,12 @@ If you want to check other files, you can add custom remover settings in `app/bu
 Here is two example.
 
 - `fonts.xml` (actually same format with strings.xml)
-- `text_appearance.xml` (actually same format with styles.xml) 
+- `text_appearance.xml` (actually same format with styles.xml)
 
 ```gradle
-unusedResourcesRemover { 
+unusedResourcesRemover {
   extraRemovers = [
-    createXmlValueRemover("font", "string", "string"), // fonts.xml
+    createXmlValueRemover("fonts", "string", "string"), // fonts.xml
     createXmlValueRemover("text_appearance", "style", "style", "style") // text_appearance.xml
   ]
   ...
@@ -104,13 +104,13 @@ unusedResourcesRemover {
     "strings.xml", // strings.xml is never checked
     "res/drawable" // drawable* dirs are never checked
   ]
-  
+
   // When dryRun option is true, unused files are not removed.
   dryRun = true // default false
 }
 ```
 
-To know more, See [UnusedResourcesRemoverExtension](https://github.com/konifar/gradle-unused-resources-remover-plugin/blob/master/plugin/src/main/groovy/com/github/konifar/gradle/remover/remover/UnusedResourcesRemoverExtension.groovy)
+To know more, See [UnusedResourcesRemoverExtension](https://github.com/konifar/gradle-unused-resources-remover-plugin/blob/master/plugin/src/main/groovy/com/github/konifar/gradle/remover/UnusedResourcesRemoverExtension.groovy)
 
 # Contributing
 This project is under development.
@@ -155,7 +155,7 @@ $ ./../gradlew assemble install
 $ cd example
 $ ./../gradlew removeUnusedResources
 ...
-$ > Task :example:removeUnusedResources 
+$ > Task :example:removeUnusedResources
 $ extraRemovers:
 $   fileType: font, resourceName: string, type: DEFAULT
 $   fileType: text_appearance, resourceName: style, type: STYLE
@@ -175,7 +175,7 @@ $ [layout] plugin
 # Donation
 If this plugin helps you, I would be so happy.
 
-I'm welcome your tip by [Kyash](https://kyash.co/)! My account name is `konifar`. 
+I'm welcome your tip by [Kyash](https://kyash.co/)! My account name is `konifar`.
 
 <img src="art/kyash_qr.png" width="200" />
 
